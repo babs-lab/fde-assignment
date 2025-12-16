@@ -12,8 +12,8 @@ st.set_page_config(
 # --- PAGE CONFIGURATION ---
 st.title("Tableau de Bord de Performance Sanitaire")
 st.markdown("""
-**Contexte :** Ce dashboard permet de visualiser les indicateurs clés de performance (KPI) des structures de santé
-en se basant sur les données cliniques, de gouvernance et opérationnelles.
+This dashboard allows you to view key performance indicators (KPIs) for healthcare facilities
+based on clinical, governance, and operational data..
 """)
 
 # --- DATA LOADING FUNCTION ---
