@@ -46,7 +46,7 @@ if facilities_df is not None:
 
     # Reaprtition calcul  (Combien ont 'Yes', 'No', 'Outdated')
     protocol_counts = gov_merged['newborn_protocol_exists'].value_counts().reset_index()
-    protocol_counts.columns = ['Statut du Protocole, Nombre de Structures']
+    protocol_counts.columns = ['Statut du Protocole', 'Nombre de Structures']
 
     # Creation of two columns  (Graphique on left , Table on right)
     col1, col2 = st.columns([1, 1])
