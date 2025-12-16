@@ -46,7 +46,7 @@ if facilities_df is not None:
 
     # Reaprtition calcul  (Combien ont 'Yes', 'No', 'Outdated')
     protocol_counts = gov_merged['newborn_protocol_exists'].value_counts().reset_index()
-    protocol_counts.columns = ['Protocol Status, Number of Structures']
+    protocol_counts.columns = ['Statut du Protocole, Nombre de Structures']
 
     # Creation of two columns  (Graphique on left , Table on right)
     col1, col2 = st.columns([1, 1])
@@ -55,9 +55,9 @@ if facilities_df is not None:
         # Graphique Camembert (Pie Chart) withPlotly
         fig_gov = px.pie(
             protocol_counts, 
-            values='Number of Structures', 
+            values='Nombre de Structures', 
             names='Protocol Status',
-            title='Distribution of Protocols Newborns per Status',
+            title='Répartition des Protocoles Nouveau-nés',
             color_discrete_sequence=px.colors.sequential.RdBu
         )
         st.plotly_chart(fig_gov, use_container_width=True)
