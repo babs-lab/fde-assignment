@@ -4,7 +4,7 @@ import plotly.express as px
 
 # --- CONFIGURATION DE LA PAGE ---
 st.set_page_config(
-    page_title="Tableau de Bord Santé - MoH",
+    page_title="Health Performance Dashboard - MoH",
     page_icon="",
     layout="wide"
 )
