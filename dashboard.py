@@ -38,15 +38,15 @@ if facilities_df is not None:
     # --- MÉTRIC 1 : GOUVERNANCE (New born protocol) ---
     # "top facilities by governance criteria (newborn_protocol_exists)"
     
-    st.header("1. Gouvernance & Conformité")
-    st.info("Critère analysé : Existence du protocole de soins pour les nouveau-nés.")
+    st.header("1. Gouvernance & Compliance")
+    st.info("Criterion analyzed: Existence of a care protocol for newborns.")
 
     # Fusion of dataframes to get necessary info (facility and Governance)
     gov_merged = pd.merge(facilities_df, governance_df, on='facility_id')
 
     # Reaprtition calcul  (Combien ont 'Yes', 'No', 'Outdated')
     protocol_counts = gov_merged['newborn_protocol_exists'].value_counts().reset_index()
-    protocol_counts.columns = ['Statut du Protocole', 'Nombre de Structures']
+    protocol_counts.columns = ['Protocol Status, Number of Structures']
 
     # Creation of two columns  (Graphique on left , Table on right)
     col1, col2 = st.columns([1, 1])
@@ -55,16 +55,16 @@ if facilities_df is not None:
         # Graphique Camembert (Pie Chart) withPlotly
         fig_gov = px.pie(
             protocol_counts, 
-            values='Nombre de Structures', 
-            names='Statut du Protocole',
-            title='Répartition des Protocoles Nouveau-nés',
+            values='Number of Structures', 
+            names='Protocol Status',
+            title='Distribution of Protocols Newborns per Status',
             color_discrete_sequence=px.colors.sequential.RdBu
         )
         st.plotly_chart(fig_gov, use_container_width=True)
 
     with col2:
         # Display of “Top Facilities” (Those that are compliant ‘Yes’)
-        st.subheader("Liste des structures conformes (Top Tier)")
+        st.subheader("List of compliant structures (Top Tier)")
         compliant_facilities = gov_merged[gov_merged['newborn_protocol_exists'] == 'Yes'][
             ['facility_name', 'district', 'tier_level']
         ]
@@ -88,8 +88,8 @@ if facilities_df is not None:
         x='reporting_month', 
         y='live_births', 
         markers=True,
-        title='Évolution des Naissances Vivantes (2024)',
-        labels={'reporting_month': 'Mois', 'live_births': 'Nombre de Naissances'}
+        title='Trends in Live Births (2024)',
+        labels={'reporting_month': 'Month', 'live_births': 'Nombre de Naissances'}
     )
     st.plotly_chart(fig_clinical, use_container_width=True)
 
@@ -102,7 +102,7 @@ if facilities_df is not None:
         district_births,
         x='district',
         y='live_births',
-        title='Volume de Naissances par District (Total)',
+        title='Number of Births by District (Total)',
         color='live_births',
         color_continuous_scale='Viridis'
     )
@@ -128,8 +128,8 @@ if facilities_df is not None:
         x='oxygen_cylinders_available',
         y='facility_name',
         orientation='h', # Barres horizontales pour lire les noms
-        title='Top 15 Structures par Disponibilité en Oxygène',
-        labels={'oxygen_cylinders_available': 'Nombre de Bouteilles', 'facility_name': 'Structure'},
+        title='Top 15 Structures by Oxygen Availability',
+        labels={'oxygen_cylinders_available': 'Number of Bottles', 'facility_name': 'Structure'},
         color='oxygen_cylinders_available',
         color_continuous_scale='Blues'
     )
