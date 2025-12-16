@@ -56,7 +56,7 @@ if facilities_df is not None:
         fig_gov = px.pie(
             protocol_counts, 
             values='Nombre de Structures', 
-            names='Protocol Status',
+            names='Statut du Protocole',
             title='Répartition des Protocoles Nouveau-nés',
             color_discrete_sequence=px.colors.sequential.RdBu
         )
